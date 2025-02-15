@@ -30,6 +30,8 @@ process.on('unhandledRejection', error => {
 	console.error('Unhandled rejection:', error);
 });
 
+app.set('trust proxy', 1);
+
 app.use(limiter);
 app.use(hpp());
 app.use('*', cors());
