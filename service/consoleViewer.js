@@ -7,7 +7,7 @@ const consoleWritter = port => {
 	console.log(`Compiled successfully!\n`);
 	console.log(`Example app listening on port ${port}!\n`);
 	console.log(`You can now view URL-Shortner in the browser.\n`);
-	console.log('\x1b[32m%s\x1b[0m', `     Local : http://localhost:${port}/api/helloworld`);
+	console.log('\x1b[32m%s\x1b[0m', `     Local : ${process.env.API_BASE_URL}api/helloworld`);
 	console.log(`\nProject running successfully !`);
 };
 

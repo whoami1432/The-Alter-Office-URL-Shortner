@@ -31,7 +31,7 @@ exports.createShortURL = async (req, res, next) => {
 
 		const newUrl = await urlShortner.saveShortURL(longUrl, shortUrl, topic);
 
-		res.status(201).json({ shortUrl: `http://localhost:9092/api/url/${shortUrl}`, createdAt: newUrl.createdat });
+		res.status(201).json({ shortUrl: `${process.env?.API_BASE_URL}api/url/${shortUrl}`, createdAt: newUrl.createdat });
 	} catch (error) {
 		next(error);
 	}

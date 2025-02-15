@@ -37,7 +37,7 @@
  *               properties:
  *                 shortUrl:
  *                   type: string
- *                   example: "http://localhost:9092/api/url/myalias"
+ *                   example: "https://google.com/api/url/myalias"
  *                 createdAt:
  *                   type: string
  *                   format: date-time
