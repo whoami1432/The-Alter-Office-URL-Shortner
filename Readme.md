@@ -70,3 +70,8 @@ Once the application is running, you can access it at `http://localhost:3000`. U
 - `GET /api/analytics/{alias}`: Get a list of all shortened URLs.
 - `GET /api/analytics/topic/{topic}`: Get a list of all shortened URLs.
 - `GET /api/analytics/overall`: Get a list of all shortened URLs.
+- `GET /api-docs`: Access the Swagger API documentation.
+
+## Swagger API Documentation
+
+The application includes Swagger for API documentation. You can access the Swagger UI at the `/api-docs` endpoint to explore and test the API endpoints interactively.
