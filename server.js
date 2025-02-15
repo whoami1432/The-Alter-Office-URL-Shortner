@@ -7,6 +7,7 @@ const cors = require('cors');
 const hpp = require('hpp');
 const session = require('express-session');
 const passport = require('passport');
+const swaggerUi = require('swagger-ui-express');
 
 const app = express();
 
@@ -19,6 +20,7 @@ const erorrHandler = require('./middlewares/errorHandler');
 const { limiter } = require('./middlewares/rateLimiter');
 const everyReqDetails = require('./middlewares/everyReqCatcher');
 const URLShortnerRoute = require('./app/routes/URLShortnerRoute');
+const swaggerSpec = require('./APIDocs/swaggerConfig');
 
 const port = process.env.PORT;
 
@@ -74,6 +76,8 @@ app.use('/auth', authRoutes);
 app.use('/api/', helloWorldRoute);
 app.use('/api/', URLShortnerRoute);
 app.get('/health_check', (req, res) => res.status(200).send('Hello World!'));
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 // error handlers
 app.use('*', notFound);
