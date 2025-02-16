@@ -21,6 +21,7 @@ const { limiter } = require('./middlewares/rateLimiter');
 const everyReqDetails = require('./middlewares/everyReqCatcher');
 const URLShortnerRoute = require('./app/routes/URLShortnerRoute');
 const swaggerSpec = require('./APIDocs/swaggerConfig');
+require('./config/passport')(passport);
 
 const port = process.env.PORT;
 
@@ -54,11 +55,8 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-require('./config/passport')(passport);
-
 // Protected route example
 app.get('/profile', (req, res) => {
-	console.log(req.isAuthenticated(), req.isUnauthenticated(), ' check1');
 	if (!req.isAuthenticated()) return res.redirect('/auth/google');
 	res.json({
 		user: req.user,
@@ -69,6 +67,12 @@ app.get('/profile', (req, res) => {
 // Home route
 app.get('/', (req, res) => {
 	res.send('<a href="/auth/google">Login with Google</a>');
+});
+
+app.get('/logout', (req, res) => {
+	req.logout();
+	req.session.destroy();
+	res.send('Goodbye!');
 });
 
 // Routes
